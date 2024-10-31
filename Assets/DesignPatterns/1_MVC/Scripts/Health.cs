@@ -16,6 +16,8 @@ namespace DesignPatterns.MVC
             get => currentHealth;
             set
             {
+                if (currentHealth == value)
+                    return;
                 currentHealth = Mathf.Clamp(value, minHealth, maxHealth);
                 HealthChanged?.Invoke(currentHealth);
             }
@@ -34,6 +36,11 @@ namespace DesignPatterns.MVC
         public void Decrement(int amount)
         {
             CurrentHealth -= amount;
+        }
+
+        public void ChangeHealth(int currentHealth)
+        {
+            CurrentHealth = currentHealth;
         }
 
         public void Restore()

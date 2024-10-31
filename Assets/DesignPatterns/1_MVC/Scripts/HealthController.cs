@@ -45,7 +45,7 @@ namespace DesignPatterns.MVC
 
         public void ChangeHealth(float currentHealth)
         {
-            model.CurrentHealth = (int)currentHealth;
+            model.ChangeHealth((int)currentHealth);
         }
 
         public void RestoreHealth()
