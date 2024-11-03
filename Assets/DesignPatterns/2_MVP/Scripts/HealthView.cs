@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 
 using TMPro;
@@ -17,6 +17,7 @@ namespace DesignPatterns.MVP
 
         private void OnEnable()
         {
+            // 사용자의 Action들이 View를 통해 들어옴
             healthSlider.onValueChanged.AddListener(OnHealthSliderValueChanged);
             restoreButton.onClick.AddListener(OnRestoreButtonClicked);
         }
@@ -30,6 +31,7 @@ namespace DesignPatterns.MVP
         #region <<Events trigger presetner methods>>
         private void OnHealthSliderValueChanged(float value)
         {
+            // View는 데이터를 Presenter에게 요청
             presenter.ChangeHealth((int)value);
         }
 
@@ -42,6 +44,7 @@ namespace DesignPatterns.MVP
         #region <<View methods that presenter calls them>>
         public void SetHealth(int health)
         {
+            // View는 Presenter가 응답한 데이터를 이용하여 화면을 나타냄
             healthSlider.value = health;
             healthLabel.text = $"{health}";
         }

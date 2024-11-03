@@ -1,4 +1,4 @@
-using UnityEngine;
+ï»¿using UnityEngine;
 
 using Zenject;
 
@@ -7,11 +7,11 @@ namespace DesignPatterns.MVP
     public class HealthPresenter : MonoBehaviour, IHealthPresenter
     {
         /*
-         * MVP ÆĞÅÏ¿¡¼­ Presenter°¡ View¿Í ModelÀ» ÂüÁ¶ÇÏ´Â ¹æ½Ä
-         * 1. Á÷Á¢ ÂüÁ¶ : ÄÚµå ³»¿¡¼­ Model°ú View¸¦ Á÷Á¢ ÂüÁ¶ÇÏ¸ç ÃÊ±âÈ­
-         * 2. »ı¼ºÀÚ ÁÖÀÔ : »ı¼ºÇÒ ¶§ ¸Å°³º¯¼ö·Î Model°ú View¸¦ Àü´Ş¹Ş¾Æ »ç¿ë
-         * 3. ÀÇÁ¸¼º ÁÖÀÔ : DI ÇÁ·¹ÀÓ ¿öÅ© »ç¿ë <- »ç¿ë Áß
-         * 4. ÀÎ½ºÆåÅÍ È°¿ë
+         * MVP íŒ¨í„´ì—ì„œ Presenterê°€ Viewì™€ Modelì„ ì°¸ì¡°í•˜ëŠ” ë°©ì‹
+         * 1. ì§ì ‘ ì°¸ì¡° : ì½”ë“œ ë‚´ì—ì„œ Modelê³¼ Viewë¥¼ ì§ì ‘ ì°¸ì¡°í•˜ë©° ì´ˆê¸°í™”
+         * 2. ìƒì„±ì ì£¼ì… : ìƒì„±í•  ë•Œ ë§¤ê°œë³€ìˆ˜ë¡œ Modelê³¼ Viewë¥¼ ì „ë‹¬ë°›ì•„ ì‚¬ìš©
+         * 3. ì˜ì¡´ì„± ì£¼ì… : DI í”„ë ˆì„ ì›Œí¬ ì‚¬ìš© <- ì‚¬ìš© ì¤‘
+         * 4. ì¸ìŠ¤í™í„° í™œìš©
          */
 
         [Inject]
@@ -22,18 +22,22 @@ namespace DesignPatterns.MVP
         public void DecreaseHealth(int amount)
         {
             model.Decrement(amount);
-            view.SetHealth(model.CurrentHealth);
         }
 
         public void RestoreHealth()
         {
             model.Restore();
-            view.SetHealth(model.CurrentHealth);
         }
 
         public void ChangeHealth(int currentHealth)
         {
+            // PresenterëŠ” Modelì—ê²Œ ë°ì´í„°ë¥¼ ìš”ì²­
             model.ChangeHealth(currentHealth);
+        }
+
+        public void ShowHealth(int currentHealth)
+        {
+            // PresenterëŠ” Viewì—ê²Œ ë°ì´í„°ë¥¼ ì‘ë‹µ
             view.SetHealth(model.CurrentHealth);
         }
     }
