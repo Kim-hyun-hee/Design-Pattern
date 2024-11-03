@@ -1,11 +1,11 @@
-using System;
+﻿using System;
 using UnityEngine;
 
 namespace DesignPatterns.MVC
 {
     public class Health : MonoBehaviour
     {
-        public Action<int> HealthChanged;
+        public Action<int> HealthChanged; // 변경 통지에 대한 처리방법
 
         private int currentHealth;
         private const int minHealth = 0;
