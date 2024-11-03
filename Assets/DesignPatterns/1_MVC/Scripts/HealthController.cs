@@ -30,7 +30,8 @@ namespace DesignPatterns.MVC
 
         private void OnHealthChanged(int currentHealth)
         {
-            view.UpdateHealth(currentHealth);
+            view.UpdateHealthLabel(currentHealth);
+            view.UpdateHealthSlider(currentHealth);
         }
 
         public void IncreaseHealth(int amount)

@@ -11,10 +11,13 @@ namespace DesignPatterns.MVC
         public Button restoreButton;
         public TextMeshProUGUI healthLabel;
 
-        public void UpdateHealth(int health)
+        public void UpdateHealthSlider (int health)
+        {
+            healthSlider.value = health;
+        }
+        public void UpdateHealthLabel(int health)
         {
             healthLabel.text = $"{health}";
-            healthSlider.value = health;
         }
     }
 }
