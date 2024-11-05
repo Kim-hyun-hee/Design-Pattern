@@ -7,7 +7,6 @@ namespace DesignPatterns.MVP
     {
         public override void InstallBindings()
         {
-            Container.Bind<Health>().FromComponentInHierarchy().AsSingle();
             Container.BindInterfacesAndSelfTo<HealthView>().FromComponentInHierarchy().AsSingle();
             Container.BindInterfacesAndSelfTo<HealthPresenter>().FromComponentInHierarchy().AsSingle();
         }

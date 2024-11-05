@@ -16,8 +16,13 @@ namespace DesignPatterns.MVP
 
         [Inject]
         private readonly IHealthView view;
-        [Inject]
-        private readonly Health model;
+        private Health model;
+
+        private void Awake()
+        {
+            model = new Health(this);
+            view.SetHealth(model.CurrentHealth);
+        }
 
         public void DecreaseHealth(int amount)
         {
@@ -38,7 +43,7 @@ namespace DesignPatterns.MVP
         public void ShowHealth(int currentHealth)
         {
             // Presenter는 View에게 데이터를 응답
-            view.SetHealth(model.CurrentHealth);
+            view.SetHealth(currentHealth);
         }
     }
 }

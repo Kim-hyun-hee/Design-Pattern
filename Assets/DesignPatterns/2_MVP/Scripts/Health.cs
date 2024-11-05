@@ -4,14 +4,19 @@ using Zenject;
 
 namespace DesignPatterns.MVP
 {
-    public class Health : MonoBehaviour
+    public class Health
     {
-        [Inject]
         private readonly IHealthPresenter presenter;
 
         private int currentHealth;
         private const int minHealth = 0;
         private const int maxHealth = 100;
+
+        public Health(IHealthPresenter presenter)
+        {
+            this.presenter = presenter;
+            currentHealth = maxHealth;
+        }
 
         public int CurrentHealth
         {
