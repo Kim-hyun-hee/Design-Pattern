@@ -21,7 +21,6 @@ namespace DesignPatterns.MVP
         private void Awake()
         {
             model = new Health(this);
-            view.SetHealth(model.CurrentHealth);
         }
 
         public void DecreaseHealth(int amount)
