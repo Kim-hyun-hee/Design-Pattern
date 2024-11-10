@@ -12,37 +12,16 @@ namespace DesignPatterns.Command
         private readonly CommandInvoker CommandInvoker = new();
         private readonly Dictionary<KeyCode, Func<ICommand>> keyBindings = new Dictionary<KeyCode, Func<ICommand>>();
 
-        private Func<ICommand> WCommand;
-        private Func<ICommand> ACommand;
-        private Func<ICommand> SCommand;
-        private Func<ICommand> DCommand;
-
-        private Func<ICommand> QCommand;
-        private Func<ICommand> ECommand;
-        private Func<ICommand> RCommand;
-        private Func<ICommand> FCommand;
-
         private void Start()
         {
-            WCommand = MoveForwardCommand;
-            ACommand = MoveLeftCommand;
-            SCommand = MoveBackCommand;
-            DCommand = MoveRightCommand;
-
-            QCommand = DefaultCommand;
-            ECommand = DefaultCommand;
-            RCommand = DefaultCommand;
-            FCommand = DefaultCommand;
-
-            keyBindings[KeyCode.W] = WCommand;
-            keyBindings[KeyCode.A] = ACommand;
-            keyBindings[KeyCode.S] = SCommand;
-            keyBindings[KeyCode.D] = DCommand;
-
-            keyBindings[KeyCode.Q] = QCommand;
-            keyBindings[KeyCode.E] = ECommand;
-            keyBindings[KeyCode.R] = RCommand;
-            keyBindings[KeyCode.F] = FCommand;
+            keyBindings[KeyCode.Q] = DefaultCommand;
+            keyBindings[KeyCode.W] = () => MoveCommand(Vector3.forward);
+            keyBindings[KeyCode.E] = DefaultCommand;
+            keyBindings[KeyCode.R] = DefaultCommand;
+            keyBindings[KeyCode.A] = () => MoveCommand(Vector3.left);
+            keyBindings[KeyCode.S] = () => MoveCommand(Vector3.back);
+            keyBindings[KeyCode.D] = () => MoveCommand(Vector3.right);
+            keyBindings[KeyCode.F] = DefaultCommand;
         }
 
         private void Update()
@@ -64,24 +43,9 @@ namespace DesignPatterns.Command
             keyBindings[keyCode2] = command;
         }
 
-        private ICommand MoveForwardCommand()
+        private ICommand MoveCommand(Vector3 direction)
         {
-            return new MoveCommand(playerController, Vector3.forward);
-        }
-
-        private ICommand MoveRightCommand()
-        {
-            return new MoveCommand(playerController, Vector3.right);
-        }
-
-        private ICommand MoveBackCommand()
-        {
-            return new MoveCommand(playerController, Vector3.back);
-        }
-
-        private ICommand MoveLeftCommand()
-        {
-            return new MoveCommand(playerController, Vector3.left);
+            return new MoveCommand(playerController, direction);
         }
 
         private ICommand DefaultCommand()
