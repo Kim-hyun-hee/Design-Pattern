@@ -8,6 +8,8 @@ namespace DesignPatterns.Command
     {
         [SerializeField]
         private PlayerController playerController;
+        [SerializeField]
+        private QuickSlotPresenter quickSlotPresenter;
 
         private readonly CommandInvoker CommandInvoker = new();
         private readonly Dictionary<KeyCode, Func<ICommand>> keyBindings = new Dictionary<KeyCode, Func<ICommand>>();
@@ -31,6 +33,12 @@ namespace DesignPatterns.Command
                 if (Input.GetKeyDown(kvPair.Key))
                 {
                     CommandInvoker.ExcuteCommand(kvPair.Value());
+                    quickSlotPresenter.Pressed(kvPair.Key);
+                }
+
+                if (Input.GetKeyUp(kvPair.Key))
+                {
+                    quickSlotPresenter.Released(kvPair.Key);
                 }
             }
         }

@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.EventSystems;
 
 namespace DesignPatterns.Command
@@ -10,6 +11,8 @@ namespace DesignPatterns.Command
     {
         [SerializeField]
         private string keyName;
+        [SerializeField]
+        private GameObject pressedEffect;
         [HideInInspector]
         public KeyCode keyCode;
 
@@ -22,6 +25,16 @@ namespace DesignPatterns.Command
                 currentCommand.currentKeyCode = keyCode;
                 currentCommand.currentParent = transform;
             }
+        }
+
+        public void Pressed()
+        {
+            pressedEffect.SetActive(true);
+        }
+
+        public void Released()
+        {
+            pressedEffect.SetActive(false);
         }
 
         public void OnDrop(PointerEventData eventData) // OnEndDrag 보다 먼저 실행됨

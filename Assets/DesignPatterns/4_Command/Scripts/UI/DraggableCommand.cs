@@ -8,11 +8,11 @@ namespace DesignPatterns.Command
     {
         [SerializeField]
         private Image image;
-        //[HideInInspector]
+        [HideInInspector]
         public Transform currentParent;
-        //[HideInInspector]
+        [HideInInspector]
         public KeyCode prevKeyCode;
-        //[HideInInspector]
+        [HideInInspector]
         public KeyCode currentKeyCode;
 
         public void OnBeginDrag(PointerEventData eventData)

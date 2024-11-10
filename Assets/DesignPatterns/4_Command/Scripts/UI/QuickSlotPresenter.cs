@@ -25,5 +25,15 @@ namespace DesignPatterns.Command
         {
             inputHandler.ChangeCommand(keyCode1, keyCode2);
         }
+
+        public void Pressed(KeyCode keyCode)
+        {
+            quickSlotView.Pressed(keyCode);
+        }
+
+        public void Released(KeyCode keyCode)
+        {
+            quickSlotView.Released(keyCode);
+        }
     }
 }
