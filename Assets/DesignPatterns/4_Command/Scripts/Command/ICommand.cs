@@ -2,7 +2,7 @@ namespace DesignPatterns.Command
 {
     public interface ICommand
     {
-        void Excute();
+        bool Excute();
         void Undo();
     }
 }

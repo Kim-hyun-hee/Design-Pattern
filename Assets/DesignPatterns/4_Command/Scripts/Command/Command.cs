@@ -6,7 +6,7 @@ namespace DesignPatterns.Command
 {
     public class Command : ICommand
     {
-        public void Excute() { }
+        public bool Excute() { return true; }
         public void Undo() { }
     }
 }

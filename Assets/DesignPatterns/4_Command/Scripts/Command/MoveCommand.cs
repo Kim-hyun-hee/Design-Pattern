@@ -15,10 +15,14 @@ namespace DesignPatterns.Command
             this.moveVec = moveVec;
         }
 
-        public void Excute()
+        public bool Excute()
         {
             if (receiver.IsValidMove(moveVec))
+            {
                 receiver.Move(moveVec);
+                return true;
+            }
+            return false;
         }
 
         public void Undo()
