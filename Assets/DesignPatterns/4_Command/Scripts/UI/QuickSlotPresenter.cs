@@ -15,6 +15,7 @@ namespace DesignPatterns.Command
 
         private void Start()
         {
+            quickSlotView.Init();
             quickSlotView.OnEndDragObservable.Subscribe(draggableCommand =>
             {
                 ChangeSlot(draggableCommand.prevKeyCode, draggableCommand.currentKeyCode);

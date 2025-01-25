@@ -17,7 +17,7 @@ namespace DesignPatterns.Command
 
         public IObservable<DraggableCommand> OnEndDragObservable { get; private set; }
 
-        private void Start()
+        public void Init()
         {
             slots = GetComponentsInChildren<Slot>().ToDictionary(slot => slot.keyCode, slot => slot);
             OnEndDragObservable = slots.ToObservable()
